@@ -1,0 +1,115 @@
+#include <cassert>
+#include <cctype>
+#include <cerrno>
+#include <cfloat>
+#include <ciso646>
+#include <climits>
+#include <clocale>
+#include <cmath>
+#include <csetjmp>
+#include <csignal>
+#include <cstdarg>
+#include <cstddef>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#if __cplusplus >= 201103L
+#include <ccomplex>
+#include <cfenv>
+#include <cinttypes>
+#include <cstdbool>
+#include <cstdint>
+#include <ctgmath>
+#include <cwchar>
+#include <cwctype>
+#endif
+#include <algorithm>
+#include <bitset>
+#include <complex>
+#include <deque>
+#include <exception>
+#include <fstream>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iosfwd>
+#include <iostream>
+#include <istream>
+#include <iterator>
+#include <limits>
+#include <list>
+#include <locale>
+#include <map>
+#include <memory>
+#include <new>
+#include <numeric>
+#include <ostream>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <typeinfo>
+#include <utility>
+#include <valarray>
+#include <vector>
+#if __cplusplus >= 201103L
+#include <array>
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
+#include <forward_list>
+#include <future>
+#include <initializer_list>
+#include <mutex>
+#include <random>
+#include <ratio>
+#include <regex>
+#include <scoped_allocator>
+#include <system_error>
+#include <thread>
+#include <tuple>
+#include <typeindex>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#endif
+#define int long long int
+#define endl "\n"
+#define pb push_back
+#define rep(i,n) for(int i=0;i<n;++i)
+#define sortn(a) sort(first.begin(),first.end())
+#define sortr(a) sort(first.begin(),first.end(),greater<int>())
+using namespace std;
+signed main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int N;
+    if(!(cin>>N)) return 0;
+    vector<int> cnt(N+1,0);
+    for(int y=1;y*y<=N;y++){
+        for(int x=1;x<y;x++){
+            int s=x*x+y*y;
+            if(s>N) break;
+            cnt[s]++;
+        }
+    }
+    vector<int> a;
+    for(int i=1;i<=N;i++){
+        if(cnt[i]==1) a.pb(i);
+    }
+    cout<<a.size()<<endl;
+    if(a.size()){
+        for(int i=0;i<a.size();i++){
+            if(i) cout<<" ";
+            cout<<a[i];
+        }
+        cout<<endl;
+    } else {
+        cout<<endl;
+    }
+    return 0;
+}
